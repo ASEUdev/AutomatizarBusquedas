@@ -1,0 +1,48 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "/images/icon128.png",
+         "16": "/images/icon16.png",
+         "48": "/images/icon48.png"
+      },
+      "default_popup": "popup.html"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "content_scripts": [ {
+      "js": [ "constants.js", "utils.js", "chrome-utils.js", "content-scripts/script-injector.js", "content-scripts/window-variable-grabber/injector.js", "content-scripts/quiz-answer-hash-function.js", "content-scripts/main.js" ],
+      "matches": [ "https://*.bing.com/*" ]
+   }, {
+      "js": [ "constants.js", "content-scripts/script-injector.js", "content-scripts/window-open-injection/injector.js" ],
+      "matches": [ "https://account.microsoft.com/rewards/*" ]
+   } ],
+   "declarative_net_request": {
+      "rule_resources": [ {
+         "enabled": false,
+         "id": "ruleset_1",
+         "path": "rules.json"
+      }, {
+         "enabled": false,
+         "id": "ruleset_2",
+         "path": "rules2.json"
+      }, {
+         "enabled": false,
+         "id": "ruleset_3",
+         "path": "rules3.json"
+      } ]
+   },
+   "description": "Automatically complete your Bing searches to earn Microsoft Rewards points.",
+   "host_permissions": [ "https://*.bing.com/*" ],
+   "icons": {
+      "128": "/images/icon128.png",
+      "16": "/images/icon16.png",
+      "48": "/images/icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzSvzkqZL0LwPsiSn74c5W5OuQDly9H7H9CXFEVie2emK9D2/uF5tpKIBtU5YH1ooRs2boV7XU59s6jE6Yo4dviRCmBsxOTs3Q/kQvTC655AD6+kk9j/+eflUaVgl/hcENhrghl/8MHjnbQw1ohoVuTgCKQKbyrh/V0154NPAHY+YFh6lhQQwmSSmTZLVAF4fwzR3g2y2Z4iNUc4UkVtAVRerE/be8K6q29pKN7zV8eCq2zc2aT3qNgUUcL/QaV+/gF4QRrFw3T5rHYoP8F71vBCP+A1AT2htpClNuYQKTK5fPJPakTiINxPkJEtDfHBskVCLFw6SzoUqaeC3FnAlwQIDAQAB",
+   "manifest_version": 3,
+   "name": "Rewardsleet",
+   "permissions": [ "storage", "declarativeNetRequest", "alarms", "https://account.microsoft.com/rewards/*", "https://trends.google.com/*", "webRequest", "webRequestBlocking", "tabs" ],
+   "update_url": "https://edge.microsoft.com/extensionwebstorebase/v1/crx",
+   "version": "1.1.0.12"
+}
